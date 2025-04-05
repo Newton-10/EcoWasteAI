@@ -5,6 +5,52 @@
       <stop offset="0%" style="stop-color:#22c55e;stop-opacity:0.3"/>
       <stop offset="100%" style="stop-color:#22c55e;stop-opacity:0.1"/>
     </linearGradient>
+    
+    <!-- Animation definitions -->
+    <style>
+      @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      
+      @keyframes pulse {
+        0% { opacity: 0.2; }
+        50% { opacity: 0.4; }
+        100% { opacity: 0.2; }
+      }
+      
+      @keyframes circuit {
+        0% { stroke-dashoffset: 1000; }
+        100% { stroke-dashoffset: 0; }
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      .rotate {
+        animation: rotate 10s linear infinite;
+        transform-origin: 400px 350px;
+      }
+      
+      .pulse {
+        animation: pulse 3s ease-in-out infinite;
+      }
+      
+      .circuit {
+        stroke-dasharray: 1000;
+        animation: circuit 5s linear infinite;
+      }
+      
+      .fade-in {
+        animation: fadeIn 1s ease-out forwards;
+      }
+      
+      .delay-1 { animation-delay: 0.2s; }
+      .delay-2 { animation-delay: 0.4s; }
+      .delay-3 { animation-delay: 0.6s; }
+    </style>
   </defs>
   
   <!-- Background -->
@@ -13,32 +59,35 @@
   <!-- Main Content -->
   <g fill="url(#greenGlow)" stroke="#22c55e" stroke-width="2">
     <!-- E-waste bin -->
-    <path d="M200 200 h400 v300 h-400 z M250 150 h300 v50 h-300 z"/>
+    <path class="fade-in" d="M200 200 h400 v300 h-400 z M250 150 h300 v50 h-300 z"/>
     
     <!-- Recycling symbol -->
-    <path d="M350 100 l50 -30 l50 30 M300 150 l50 -30 M450 150 l-50 -30"/>
+    <g class="rotate">
+      <path d="M350 100 l50 -30 l50 30 M300 150 l50 -30 M450 150 l-50 -30"/>
+    </g>
     
     <!-- Electronics -->
     <g>
       <!-- Computer -->
-      <rect x="280" y="250" width="240" height="160" rx="10"/>
-      <rect x="300" y="270" width="200" height="120" rx="5"/>
+      <rect class="fade-in delay-1" x="280" y="250" width="240" height="160" rx="10"/>
+      <rect class="fade-in delay-2" x="300" y="270" width="200" height="120" rx="5"/>
       
       <!-- Mobile devices -->
-      <rect x="250" y="430" width="60" height="40" rx="5"/>
-      <rect x="330" y="430" width="80" height="40" rx="5"/>
-      <rect x="430" y="430" width="120" height="40" rx="5"/>
+      <rect class="fade-in delay-1" x="250" y="430" width="60" height="40" rx="5"/>
+      <rect class="fade-in delay-2" x="330" y="430" width="80" height="40" rx="5"/>
+      <rect class="fade-in delay-3" x="430" y="430" width="120" height="40" rx="5"/>
       
       <!-- Circuit patterns -->
-      <path d="M320 300 h160 M320 320 h160 M320 340 h160" 
+      <path class="circuit" 
+            d="M320 300 h160 M320 320 h160 M320 340 h160" 
             stroke="#22c55e" stroke-width="1" fill="none"/>
     </g>
     
     <!-- Decorative elements -->
-    <circle cx="400" cy="350" r="50" fill="none" stroke="#22c55e" stroke-width="1"/>
-    <circle cx="400" cy="350" r="40" fill="none" stroke="#22c55e" stroke-width="1"/>
+    <circle class="pulse" cx="400" cy="350" r="50" fill="none" stroke="#22c55e" stroke-width="1"/>
+    <circle class="rotate" cx="400" cy="350" r="40" fill="none" stroke="#22c55e" stroke-width="1"/>
   </g>
   
   <!-- Glow effects -->
-  <circle cx="400" cy="350" r="60" fill="url(#greenGlow)" opacity="0.2"/>
+  <circle class="pulse" cx="400" cy="350" r="60" fill="url(#greenGlow)" opacity="0.2"/>
 </svg> 
