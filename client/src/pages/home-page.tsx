@@ -61,7 +61,7 @@ export default function HomePage() {
             </div>
             <div className="hidden md:block relative">
               <img
-                src="D:\EcoWasteAI\public\ewastecol.png"
+                src="/e-waste-sorting.svg"
                 alt="E-Waste Sorting Illustration"
                 className="w-full h-auto max-w-[500px] mx-auto transform hover:scale-105 transition-transform duration-300 rounded-lg shadow-2xl shadow-primary-900/20"
               />
